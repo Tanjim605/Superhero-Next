@@ -1,15 +1,23 @@
+"use client";
+
+import { ThemeContext } from "@/context";
+import { useContext, type JSX } from "react";
+
 interface PaginationProps {
-  currentPage: number;
   totalPages: number;
-  onPageChange: React.Dispatch<React.SetStateAction<number>>; //got this by hovering over setPage state on context
-};
-import type { JSX } from "react";
+}
+
+interface PaginationContextProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+}
 
 export default function Pagination({
-  currentPage,
   totalPages,
-  onPageChange,
 }: PaginationProps): JSX.Element {
+  const { page, setPage } = useContext(ThemeContext) as PaginationContextProps;
+  const currentPage: number = page;
+
   const getPageNumbers = (): (number | "...")[] => {
     const pages: (number | "...")[] = []; // pages array te number thakbe maximum time. kintu majhe majhe "..." ei string ta thakte pare
     const delta: number = 1; // Show 1 page on each side of current page
@@ -49,19 +57,19 @@ export default function Pagination({
       page <= totalPages &&
       page !== currentPage
     ) {
-      onPageChange(page);
+      setPage(page);
     }
   };
 
   const handlePrevious = (): void => {
     if (currentPage > 1) {
-      onPageChange(currentPage - 1);
+      setPage(currentPage - 1);
     }
   };
 
   const handleNext = (): void => {
     if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
+      setPage(currentPage + 1);
     }
   };
 
