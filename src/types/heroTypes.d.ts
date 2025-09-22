@@ -38,3 +38,14 @@ interface Hero {
   created?: string;
   updated?: string;
 }
+
+interface PageInfo {
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+}
+
+interface AllHero extends PageInfo {
+  items: Hero[];
+}

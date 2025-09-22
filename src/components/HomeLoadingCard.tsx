@@ -2,7 +2,7 @@ import type { JSX } from "react";
 
 export default function HomeLoadingCard(): JSX.Element {
   return (
-    <div className="relative w-[364px] flex flex-wrap bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-amber-400 hover:shadow-md transition-all duration-300 hover:scale-105">
+    <div className="relative w-auto flex flex-wrap bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-amber-400 hover:shadow-md transition-all duration-300 hover:scale-105">
       {/* Card Background and Image Placeholder */}
       <div className="relative w-full h-80 sm:h-96 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
         <div className="w-full h-full bg-gray-300 dark:bg-gray-700 animate-pulse rounded"></div>
