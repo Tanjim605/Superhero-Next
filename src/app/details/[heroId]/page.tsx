@@ -16,9 +16,10 @@ import PowerStatsBarChart from "@/components/heroDetails/PowerStatsBarChart";
 import PowerStatsRadarChart from "@/components/heroDetails/PowerStatsRadarChart";
 import Work from "@/components/heroDetails/Work";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default async function SuperheroDetails({params}: {params: Promise<{heroId:string}>}): Promise<JSX.Element> {
-  const { heroId } = await params
+export default function SuperheroDetails(): JSX.Element {
+  const { heroId } = useParams() as { heroId: string }
   console.log(heroId);
   
 
@@ -59,7 +60,6 @@ export default async function SuperheroDetails({params}: {params: Promise<{heroI
 
   return (
     <div className="relative container mx-auto p-4">
-      {/* <Header /> */}
 
       {/* Back Button */}
       <Link href="/" className=" ">

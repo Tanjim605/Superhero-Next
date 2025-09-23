@@ -7,7 +7,7 @@ export default function Error() {
     <div className="text-center">
       <h1 className="text-2xl text-red-500">Something went wrong</h1>
       <p>
-        Please, go back to <Link href={"./"} className="font-bold text-blue-500">Home page</Link>
+        Please, go back to <Link href={"/"} className="font-bold text-blue-500">Home page</Link>
       </p>
     </div>
   );
