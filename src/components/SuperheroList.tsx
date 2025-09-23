@@ -30,7 +30,6 @@ export default function SuperheroList() {
   const { perPage, sortOrder, page, setPage, searchQuery } = useContext(
     ThemeContext
   ) as ContextProps;
-  console.log("super hero length", superheroes.length);
 
   useEffect(() => {
     async function getSuperheroes() {

@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
 import Header from "@/components/Header";
 import { ThemeContext } from "@/context";
 import "@/styles/globals.css";
-import type { Metadata } from "next";
 import { useState } from "react";
 
 // export const metadata: Metadata = {
@@ -24,28 +23,32 @@ export default function RootLayout({
   const [page, setPage] = useState<number>(1); // Current page number
   const [sortOrder, setSortOrder] = useState<string>("asc"); // 'asc' or 'desc'
   const [searchQuery, setSearchQuery] = useState<string>(""); // search query is pulled to root level to stay in back switch
-  
+
   return (
     <html lang="en">
-      <body>
-        <ThemeContext
-          value={{
-            darkMode,
-            setDarkMode,
-            perPage,
-            setPerPage,
-            sortOrder,
-            setSortOrder,
-            page,
-            setPage,
-            searchQuery,
-            setSearchQuery,
-          }}
+      <ThemeContext
+        value={{
+          darkMode,
+          setDarkMode,
+          perPage,
+          setPerPage,
+          sortOrder,
+          setSortOrder,
+          page,
+          setPage,
+          searchQuery,
+          setSearchQuery,
+        }}
+      >
+        <body
+          className={`${
+            darkMode ? "dark" : ""
+          } font-sans bg-white dark:bg-slate-900 transition-colors duration-300`}
         >
           <Header />
           {children}
-        </ThemeContext>
-      </body>
+        </body>
+      </ThemeContext>
     </html>
   );
 }
