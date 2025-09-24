@@ -54,7 +54,7 @@ export default function RootLayout({
             {children}
           </body>
         </ThemeContext>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </html>
   );

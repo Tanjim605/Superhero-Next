@@ -57,12 +57,12 @@ export default function SuperheroList() {
   if (error) {
     <ErrorMessage> Error: {error.message}</ErrorMessage>;
   }
-  
+
   return (
     <>
       {/* <Suspense fallback={<div className="h-96 text-center bg-red-600">Loading.....</div>}> */}
       {isLoading ? (
-        <Loading />
+        <Loading perPage={perPage}/>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
