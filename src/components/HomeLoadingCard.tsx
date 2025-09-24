@@ -13,9 +13,9 @@ export default function HomeLoadingCard(): JSX.Element {
         <div className="flex justify-between items-center w-full">
           <div className="flex flex-col">
             {/* Publisher Placeholder */}
-            <div className="h-4 min-w-24 bg-gray-300 dark:bg-gray-600 animate-pulse rounded"></div>
+            <div className="h-4 w-auto bg-gray-300 dark:bg-gray-600 animate-pulse rounded"></div>
             {/* Name Placeholder */}
-            <div className="h-6 min-w-40 mt-1 bg-gray-300 dark:bg-gray-600 animate-pulse rounded"></div>
+            <div className="h-6 w-auto mt-1 bg-gray-300 dark:bg-gray-600 animate-pulse rounded"></div>
           </div>
 
           {/* Navigation Button Placeholder */}
