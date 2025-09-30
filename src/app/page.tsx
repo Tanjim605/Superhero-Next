@@ -1,4 +1,5 @@
 import SignInBtnGithub from "@/components/SignInBtnGithub";
+import SignInBtnGoogle from "@/components/SignInBtnGoogle";
 import type { JSX } from "react";
 
 export default function HomePage(): JSX.Element {
@@ -14,7 +15,7 @@ export default function HomePage(): JSX.Element {
           </div>
         </div>
         <div className="text-lg justify-center items-center flex gap-4">
-          
+          <SignInBtnGoogle />
           <SignInBtnGithub />
         </div>
       </div>
