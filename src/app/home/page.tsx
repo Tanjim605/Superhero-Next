@@ -1,3 +1,4 @@
+import LoggedInUserInfo from "@/components/LoggedInUserInfo";
 import PerPageSelection from "@/components/PerPageSelection";
 import SearchField from "@/components/SearchField";
 import SortButton from "@/components/SortButton";
@@ -9,6 +10,7 @@ export default function HomePage() {
   return (
     <div className="container mx-auto p-4 dark:bg-slate-900 min-h-screen">
       {/* <Header /> */}
+      <LoggedInUserInfo />
       <div className="flex flex-col md:flex-row justify-between mb-4 space-y-4 md:space-y-0 dark:text-slate-300">
         {/* input field for search */}
         <SearchField />
