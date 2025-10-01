@@ -6,7 +6,7 @@ export default function SignInBtnGithub() {
   return (
     <button
       onClick={() => githubLogin()}
-      className="text-amber-100  text-2xl bg-green-700 rounded py-1 px-2"
+      className="text-amber-100  text-2xl bg-green-700 hover:bg-green-800 rounded py-2 px-3"
     >
       Continue With Github
     </button>
