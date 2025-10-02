@@ -3,6 +3,8 @@
 import Header from "@/components/Header";
 import { ThemeContext } from "@/context";
 import "@/styles/globals.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 
 // export const metadata: Metadata = {
@@ -24,31 +26,36 @@ export default function RootLayout({
   const [sortOrder, setSortOrder] = useState<string>("asc"); // 'asc' or 'desc'
   const [searchQuery, setSearchQuery] = useState<string>(""); // search query is pulled to root level to stay in back switch
 
+  const queryClient = new QueryClient();
+
   return (
     <html lang="en">
-      <ThemeContext
-        value={{
-          darkMode,
-          setDarkMode,
-          perPage,
-          setPerPage,
-          sortOrder,
-          setSortOrder,
-          page,
-          setPage,
-          searchQuery,
-          setSearchQuery,
-        }}
-      >
-        <body
-          className={`${
-            darkMode ? "dark" : ""
-          } font-sans bg-white dark:bg-slate-900 transition-colors duration-300`}
+      <QueryClientProvider client={queryClient}>
+        <ThemeContext
+          value={{
+            darkMode,
+            setDarkMode,
+            perPage,
+            setPerPage,
+            sortOrder,
+            setSortOrder,
+            page,
+            setPage,
+            searchQuery,
+            setSearchQuery,
+          }}
         >
-          <Header />
-          {children}
-        </body>
-      </ThemeContext>
+          <body
+            className={`${
+              darkMode ? "dark" : ""
+            } font-sans bg-white dark:bg-slate-900 transition-colors duration-300`}
+          >
+            <Header />
+            {children}
+          </body>
+        </ThemeContext>
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      </QueryClientProvider>
     </html>
   );
 }

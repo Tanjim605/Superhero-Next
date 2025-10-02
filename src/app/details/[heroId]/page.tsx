@@ -1,7 +1,5 @@
-"use client"
+"use client";
 
-import { ChartBar, Hexagon } from "lucide-react"; // Importing the ChartBar icon
-import { useEffect, useState, type JSX } from "react";
 import { fetchSuperheroDetails } from "@/apis/api"; // Our API function
 import HeroDetailsLoader from "@/components/DetailPageLoader";
 import ErrorMessage from "@/components/ErrorMessage";
@@ -15,31 +13,31 @@ import Name from "@/components/heroDetails/Name";
 import PowerStatsBarChart from "@/components/heroDetails/PowerStatsBarChart";
 import PowerStatsRadarChart from "@/components/heroDetails/PowerStatsRadarChart";
 import Work from "@/components/heroDetails/Work";
+import { useQuery } from "@tanstack/react-query";
+import { ChartBar, Hexagon } from "lucide-react"; // Importing the ChartBar icon
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useEffect, useState, type JSX } from "react";
 
 export default function SuperheroDetails(): JSX.Element {
-  const { heroId } = useParams() as { heroId: string }
+  const { heroId } = useParams() as { heroId: string };
   console.log(heroId);
-  
 
-  const [hero, setHero] = useState<null | Hero>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [chartType, setChartType] = useState<string>("radar"); // State to toggle between bar and radar chart
 
-  useEffect(() => {
-    const loadDetails = async () => {
-      try {
-        const data: Hero = await fetchSuperheroDetails(heroId); // Fetch by ID
-        setHero(data);
-      } catch (error) {
-        console.error("Error fetching details:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadDetails();
-  }, [heroId]);
+  const {
+    data: hero,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["hero"],
+    queryFn: async () => {
+      return await fetchSuperheroDetails(heroId);
+    },
+    gcTime:0  // this is used to prevent caching.
+              // If there is cache it shows the previous hero data until the fetching is done.
+              // Now it shows loading state. by useQuery
+  });
 
   // Scroll to top when the component mounts
   // This ensures that when navigating to the details page, the view starts at the top
@@ -49,7 +47,7 @@ export default function SuperheroDetails(): JSX.Element {
   }, []);
 
   // display the loader while the hero details are being fetched
-  if (loading) {
+  if (isLoading) {
     return <HeroDetailsLoader />; // Add spinner here
   }
 
@@ -60,9 +58,8 @@ export default function SuperheroDetails(): JSX.Element {
 
   return (
     <div className="relative container mx-auto p-4">
-
       {/* Back Button */}
-      <Link href="/" className=" ">
+      <Link href="/home" className=" ">
         <div className="h-12 w-22 ml-4 lg:ml-10 hover:scale-110 transition-all bg-blue-950 rounded-xl shadow-lg mb-4 flex items-center justify-center text-white font-semibold">
           &larr; Back
         </div>
