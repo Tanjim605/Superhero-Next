@@ -23,10 +23,10 @@ interface ContextProps {
 
 export default function SuperheroList() {
   // const [superheroes, setSuperheroes] = useState<Hero[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(1);
+  const [totalPages, _setTotalPages] = useState<number>(1);
 
   // Using ThemeContext to access the theme, pagination, and sorting states
-  const { perPage, sortOrder, page, setPage, searchQuery } = useContext(
+  const { perPage, sortOrder, page, searchQuery } = useContext(
     ThemeContext
   ) as ContextProps;
 
@@ -80,7 +80,7 @@ export default function SuperheroList() {
             )}
           </div>
           <div>
-            {superheroes?.items?.length! > 0 && (
+            {superheroes!.items.length > 0 && (
               <Pagination totalPages={superheroes?.totalPages!} />
             )}
           </div>
