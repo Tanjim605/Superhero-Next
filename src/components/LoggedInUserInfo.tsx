@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import SignOutBtnGithub from "./SignOutBtnGithub";
+import Image from "next/image";
 
 export default async function LoggedInUserInfo() {
   const session = await auth();
@@ -11,9 +12,9 @@ export default async function LoggedInUserInfo() {
       <div className="flex items-center justify-between w-auto mb-3 p-6 bg-amber-100 dark:bg-gray-400 rounded-2xl shadow-md">
         <div className= "flex gap-3 items-center">
           <div>
-            <img
-              src={session?.user?.image}
-              alt={session?.user?.name}
+            <Image
+              src={session?.user?.image ?? ""}
+              alt={session?.user?.name ?? ""}
               className="w-8 rounded-full"
             />
           </div>
