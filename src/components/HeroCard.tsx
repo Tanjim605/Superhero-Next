@@ -14,7 +14,7 @@ export default function HeroCard({
       <div className="relative w-full flex bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-lime-300 hover:shadow-md transition-all duration-300 hover:scale-105">
         {/* Card Background and Image */}
         <div className="relative w-full h-80 sm:h-96 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-          <Image
+          <img
             src={image?.url ?? ""}
             alt={name ?? ""}
             className="w-full object-cover rounded"

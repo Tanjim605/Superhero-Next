@@ -2,7 +2,7 @@
 
 import { logout } from "@/utils/actions/auth";
 
-export default function SignOutBtnGithub() {
+export default function SignOutBtn() {
   return (
     <button
       onClick={() => logout()}
