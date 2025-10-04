@@ -81,7 +81,7 @@ export default function SuperheroList() {
           </div>
           <div>
             {superheroes!.items.length > 0 && (
-              <Pagination totalPages={superheroes?.totalPages!} />
+              <Pagination totalPages={superheroes!.totalPages!} />
             )}
           </div>
         </>
